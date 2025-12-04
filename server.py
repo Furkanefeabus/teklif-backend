@@ -222,7 +222,7 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
             raise HTTPException(status_code=401, detail="Invalid authentication credentials")
     except jwt.ExpiredSignatureError:
         raise HTTPException(status_code=401, detail="Token has expired")
-    except jwt.JWTError:
+    except Exception:
         raise HTTPException(status_code=401, detail="Could not validate credentials")
     
     # Kullanıcıyı Supabase'den çek
